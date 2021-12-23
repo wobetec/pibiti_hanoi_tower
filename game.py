@@ -21,7 +21,8 @@ def game(n, method = "play_game", show_steps = False):
     def play_game():
         while True:
             system("cls")
-            show()
+            if show_steps:
+                show()
             begin, end = input("from / to: ").split()
             move(int(begin), int(end))
 
@@ -37,9 +38,11 @@ def game(n, method = "play_game", show_steps = False):
             move(begin, end)
 
     def recursive_1():
-        show()
+        if show_steps:
+            show()
         rec_1(n, 0, 2)
-        show()
+        if show_steps:
+            show()
 
 
     if method == "play_game":
