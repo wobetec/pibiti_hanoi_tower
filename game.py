@@ -1,6 +1,15 @@
 from os import system
 import sys
 
+
+"""
+Data struct to moves:
+
+move_sequence = [(begin, end), ...]
+
+"""
+
+
 def game(n, method = "play_game", show_steps = False):
     tower = [list(range(n, 0, -1)), [], []]
     moves = 0
@@ -12,17 +21,12 @@ def game(n, method = "play_game", show_steps = False):
         else:
             return False
     
-    def show():
-        print("################")
-        for i in tower:
-            print(i)
-        print("################")
+    rec_1(n-1, aux, end)
     
     def play_game():
         while True:
             system("cls")
-            if show_steps:
-                show()
+            show()
             begin, end = input("from / to: ").split()
             move(int(begin), int(end))
 
@@ -38,11 +42,9 @@ def game(n, method = "play_game", show_steps = False):
             move(begin, end)
 
     def recursive_1():
-        if show_steps:
-            show()
+        show()
         rec_1(n, 0, 2)
-        if show_steps:
-            show()
+        show()
 
 
     if method == "play_game":
