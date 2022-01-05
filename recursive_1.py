@@ -3,15 +3,6 @@ import sys
 from time import perf_counter
 
 
-tower = []
-def move(tup):
-    if len(tower[tup[1]]) == 0 or tower[tup[1]][-1] > tower[tup[0]][-1]:
-        tower[tup[1]].append(tower[tup[0]].pop(-1))
-        return True
-    else:
-        return False
-
-
 dic = {1:2, 2:1, 3:0}
 @deterministic
 def rec_1(n, begin, end):
@@ -22,26 +13,16 @@ def rec_1(n, begin, end):
         return [(begin, end)]
 
 
-def show():
-    print("################")
-    for i in tower:
-        print(i)
-    print("################")
-
-
 @initialize_intpy(__file__)
-def main():
-    #show()
+def main(n):
     moves = rec_1(n, 0, 2)
-    for tup in moves:
-        move(tup)
-    #show()
+
 
 if __name__ == '__main__':
     n = int(sys.argv[1])
-    tower = [list(range(n, 0, -1)), [], []]
-    moves = 0
+
     start = perf_counter()
-    main()
+    main(n)
     t = perf_counter() - start
+
     print(t)
