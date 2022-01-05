@@ -42,7 +42,7 @@ if __name__ == '__main__':
     interative(n)
     t = perf_counter() - start
     print("""['v027x']
-False
+True
 pickle""")
     print(t)
 
